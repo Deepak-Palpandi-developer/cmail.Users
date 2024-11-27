@@ -1,0 +1,2 @@
+SETX ASPNETCORE_ENVIRONMENT "Development"
+SETX CLONE_AuthConnectionString "Server=localhost;Port=5432;Database=clone_authentication_dev;UserId=postgres;Password=pass@123;Application Name=AdviceService"
