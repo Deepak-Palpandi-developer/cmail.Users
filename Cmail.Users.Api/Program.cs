@@ -63,3 +63,5 @@ app.UseMiddleware<EncryptionMiddleware>();
 app.MapControllers();
 
 app.Run();
+
+//migration CLI - Add-Migration YourMigrationName -Project Cmail.Users.Api

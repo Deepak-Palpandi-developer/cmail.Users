@@ -12,13 +12,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["cmail.users/Cmail.Users.Api/Cmail.Users.Api.csproj", "cmail.users/Cmail.Users.Api/"]
-COPY ["cmail.users/Cmail.Users.Application/Cmail.Users.Application.csproj", "cmail.users/Cmail.Users.Application/"]
-COPY ["cmail.users/Cmail.Users.Domain/Cmail.Users.Domain.csproj", "cmail.users/Cmail.Users.Domain/"]
-COPY ["Cgmail.Common/Cgmail.Common.csproj", "Cgmail.Common/"]
-RUN dotnet restore "./cmail.users/Cmail.Users.Api/Cmail.Users.Api.csproj"
+COPY ["cmail.Users/Cmail.Users.Api/Cmail.Users.Api.csproj", "cmail.Users/Cmail.Users.Api/"]
+COPY ["cmail.Users/Cmail.Users.Application/Cmail.Users.Application.csproj", "cmail.Users/Cmail.Users.Application/"]
+COPY ["cmail.Users/Cmail.Users.Domain/Cmail.Users.Domain.csproj", "cmail.Users/Cmail.Users.Domain/"]
+COPY ["cmail.common/Cmail.Common.csproj", "cmail.common/"]
+RUN dotnet restore "./cmail.Users/Cmail.Users.Api/Cmail.Users.Api.csproj"
 COPY . .
-WORKDIR "/src/cmail.users/Cmail.Users.Api"
+WORKDIR "/src/cmail.Users/Cmail.Users.Api"
 RUN dotnet build "./Cmail.Users.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
