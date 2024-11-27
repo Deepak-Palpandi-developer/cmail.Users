@@ -11,7 +11,7 @@ namespace Cmail.Users.Api.Controllers.Users;
 
 
 [Authorize]
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
