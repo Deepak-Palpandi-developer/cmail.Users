@@ -16,11 +16,7 @@ builder.Services.CustomAddControllers();
 
 configuration.AddEnvironmentVariables("CLONE_");
 
-var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
-
-var key = Encoding.UTF8.GetBytes(jwtSettings!.Key ?? string.Empty);
-
-string connectionString = configuration.GetValue<string>("AuthConnectionString") ?? string.Empty;
+string connectionString = configuration.GetValue<string>("UsersConnectionString") ?? string.Empty;
 
 string? assemblyName = Assembly.GetExecutingAssembly().GetName().Name ?? string.Empty;
 
@@ -30,7 +26,7 @@ builder.Services.AddUsersApplicationExtension(connectionString, assemblyName);
 
 builder.CustomAddSeriLog(configuration, connectionString);
 
-builder.Services.CustomAddRedisCache(configuration, "Authentication:");
+builder.Services.CustomAddRedisCache(configuration, "Users:");
 
 builder.Services.AddEndpointsApiExplorer();
 
